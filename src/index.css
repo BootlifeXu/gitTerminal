@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 222 20% 8%;
+    --foreground: 142 60% 75%;
+
+    --card: 222 20% 10%;
+    --card-foreground: 142 60% 75%;
+
+    --popover: 222 20% 10%;
+    --popover-foreground: 142 60% 75%;
+
+    --primary: 142 76% 60%;
+    --primary-foreground: 222 20% 8%;
+
+    --secondary: 180 60% 50%;
+    --secondary-foreground: 222 20% 8%;
+
+    --muted: 222 10% 30%;
+    --muted-foreground: 142 30% 55%;
+
+    --accent: 142 80% 50%;
+    --accent-foreground: 222 20% 8%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 142 60% 75%;
+
+    --border: 142 40% 25%;
+    --input: 222 20% 15%;
+    --ring: 142 76% 60%;
+
+    --radius: 0.25rem;
+
+    --terminal-glow: 142 80% 50%;
+    --terminal-cursor: 142 90% 60%;
+    --terminal-prompt: 180 70% 55%;
+    
+    --sidebar-background: 222 20% 10%;
+    --sidebar-foreground: 142 60% 75%;
+    --sidebar-primary: 142 76% 60%;
+    --sidebar-primary-foreground: 222 20% 8%;
+    --sidebar-accent: 222 20% 15%;
+    --sidebar-accent-foreground: 142 60% 75%;
+    --sidebar-border: 142 40% 25%;
+    --sidebar-ring: 142 76% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-mono;
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .terminal-glow {
+    text-shadow: 0 0 10px hsl(var(--terminal-glow) / 0.5),
+                 0 0 20px hsl(var(--terminal-glow) / 0.3);
+  }
+  
+  .terminal-cursor {
+    animation: cursor-blink 1s step-end infinite;
+  }
+  
+  @keyframes cursor-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+  
+  @keyframes terminal-flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.95; }
+  }
+  
+  .terminal-flicker {
+    animation: terminal-flicker 0.15s ease-in-out infinite;
+  }
+}
